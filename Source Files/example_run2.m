@@ -1,4 +1,7 @@
+
 clear all;
+addpath('Functions');
+
 Nt = 4;
 Nr = 8;
 moduTypes = cell(1,Nt);
@@ -53,7 +56,7 @@ disp('------------------')
 fprintf("Tx Antennas:%d,Rx Antennas: %d \n", Nt,Nr);
 fprintf('Modulations:')
 disp(moduTypes)
-fprintf('(Hard) Error bits: %d out of %d\n',nErrs,length(msg) );
+fprintf('(SD) Error bits: %d out of %d\n',nErrs,length(msg) );
 fprintf('--(Hard) %d of %d leaf nodes are visited.', nVistedNodes,prod(Ms) );
 %------------------------------------------------------------------------- 
 outType = 'soft';
@@ -81,6 +84,13 @@ for i = 1 : Nt
 end
 nErrs = sum((out<0) ~= msg);
 fprintf('(MMSE) Error bits: %d out of %d\n',nErrs,length(msg) );
+
+
+
+
+
+
+
 
 
 
