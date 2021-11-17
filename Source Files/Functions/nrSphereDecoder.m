@@ -19,7 +19,7 @@ function [out,nVistedNodes] = nrSphereDecoder(H,rxSymbs,moduTypes,outType)
 
     [Nr,Nt] = size(H);
     assert(Nr == length(rxSymbs));
-
+    assert(Nr >= Nt,'Nr must be greater or equal to Nt!')
     
     if strcmpi(outType,'soft')
         isSoftDec = true;
