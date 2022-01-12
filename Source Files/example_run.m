@@ -31,7 +31,7 @@ H = H/sqrt(Nt);
 rxSymbs = H*txSymbs;
 
 % noise
-N0 = 0;
+N0 = 0.5;
 rxSymbs = rxSymbs + sqrt(N0/2)*(randn(Nr,1)+ 1j* randn(Nr,1));
 
 % ==================================================================
