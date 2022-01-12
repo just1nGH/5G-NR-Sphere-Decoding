@@ -51,7 +51,8 @@ fprintf(' - (Hard SD) %d of %d leaf nodes are visited.', nVistedNodes,prod(Ms) )
 % ==================================================================
 outType = 'soft';
 [outSoft,nVistedNodes] = nrSphereDecoder(H,rxSymbs,moduTypes,outType);
-nErrs = sum((outSoft < 0) ~= msg);
+out = outSoft < 0;
+nErrs = sum(out ~= msg);
 
 %fprintf('(Soft SD)Error bits: %d out of %d\n',nErrs,length(msg) );
 fprintf(' - (Soft SD)%d of %d leaf nodes are visited\n', nVistedNodes,prod(Ms) );
@@ -59,7 +60,7 @@ fprintf(' - (Soft SD)%d of %d leaf nodes are visited\n', nVistedNodes,prod(Ms) )
 % ======================================================================
 % ZF
 eqSymbs = pinv(H)*rxSymbs;
-out(:) = 0.0;
+
 for i = 1 : Nt
  out(offsets(i) + (1: Ks(i))) = nrSoftModuDemapper(eqSymbs(i),moduTypes{i},N0,'max-log-map');
 end
