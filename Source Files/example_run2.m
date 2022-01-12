@@ -61,9 +61,8 @@ fprintf('--(Hard) %d of %d leaf nodes are visited.', nVistedNodes,prod(Ms) );
 %------------------------------------------------------------------------- 
 outType = 'soft';
 [outSoft,nVistedNodes] = nrSphereDecoder(H,rxSymbs,moduTypes,outType);
-out = outSoft < 0;
 
-nErrs = sum(out ~= msg);
+nErrs = sum( (outSoft < 0) ~= msg);
 %fprintf('(Soft) Error bits: %d out of %d\n',nErrs,length(msg) );
 fprintf(' (Soft) %d of %d leaf nodes are visited\n', nVistedNodes,prod(Ms) );
 
